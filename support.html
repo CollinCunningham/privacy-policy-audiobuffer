@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AudioBuffer Support</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      max-width: 720px;
+      margin: 40px auto;
+      padding: 0 24px 60px;
+      font-size: 16px;
+      line-height: 1.65;
+      color: #1a1a1a;
+    }
+    h1 { font-size: 28px; margin-bottom: 4px; }
+    h2 { font-size: 20px; margin-top: 40px; margin-bottom: 8px; border-bottom: 1px solid #e0e0e0; padding-bottom: 6px; }
+    h3 { font-size: 17px; margin-top: 24px; margin-bottom: 4px; }
+    p, li { margin: 6px 0; }
+    ul { padding-left: 20px; }
+    .subtitle { color: #555; font-size: 15px; margin-top: 2px; }
+    .note { background: #f5f5f5; border-left: 3px solid #ccc; padding: 10px 14px; border-radius: 4px; font-size: 15px; margin: 16px 0; }
+    footer { margin-top: 56px; border-top: 1px solid #e0e0e0; padding-top: 20px; font-size: 14px; color: #555; }
+    a { color: #007aff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <h1>AudioBuffer Support</h1>
+  <p class="subtitle">How to use the app</p>
+
+  <h2>What is AudioBuffer?</h2>
+  <p>AudioBuffer is a rolling-buffer audio recorder. Rather than pressing record and hoping you caught the right moment, the app continuously holds the last N seconds of audio in memory. When something worth keeping happens, tap <strong>Save</strong> and that moment is yours.</p>
+
+  <h2>Getting Started</h2>
+  <h3>Microphone Permission</h3>
+  <p>On first launch, AudioBuffer will ask for access to your microphone. Tap <strong>Allow</strong> to enable recording. Without this permission the app cannot function. You can grant it later in <strong>Settings &rarr; Privacy &amp; Security &rarr; Microphone</strong>.</p>
+
+  <h3>Starting and Stopping the Buffer</h3>
+  <p>The main screen shows a slide control in the center. Drag the thumb to the right until it latches to start buffering. The control turns red and pulses while active. Drag it back to stop.</p>
+  <div class="note">The buffer runs silently in the background. Nothing is saved to your device until you tap <strong>Save</strong>.</div>
+
+  <h2>Saving a Clip</h2>
+  <p>While the buffer is running, a <strong>Save</strong> button is visible. Tap it at any time to capture the last N seconds of audio as a new clip. A brief confirmation overlay will appear at the top of the screen.</p>
+  <p>The clip length (how many seconds are captured on each save) is adjustable in Options — see <a href="#options">Options</a> below.</p>
+
+  <h2>Playback</h2>
+  <p>Tap the folder icon at the bottom of the main screen to open your clips. Tap any clip to expand it and reveal the playback controls. Tap <strong>Play</strong> to listen. Selecting a different clip will automatically stop any clip currently playing.</p>
+
+  <h2>Editing a Clip</h2>
+  <h3>Trimming</h3>
+  <p>Open the clip list, expand a clip, and tap the <strong>pencil icon</strong> (or long-press the clip and choose <strong>Edit</strong>). The edit view shows the full waveform with two drag handles on either end:</p>
+  <ul>
+    <li>Drag the <strong>left handle</strong> to set where the clip starts.</li>
+    <li>Drag the <strong>right handle</strong> to set where the clip ends.</li>
+    <li>The bright region between the handles is what will be kept.</li>
+    <li>Tap <strong>Play</strong> to preview your selection before committing.</li>
+    <li>Tap <strong>Crop</strong> to apply the trim. This overwrites the original clip.</li>
+  </ul>
+
+  <h3>Renaming</h3>
+  <p>In the edit view, tap the clip name at the top to rename it.</p>
+
+  <h2>Managing Clips</h2>
+  <ul>
+    <li><strong>Delete a single clip:</strong> Swipe left on the clip and tap Delete, or long-press and choose Delete.</li>
+    <li><strong>Share a clip:</strong> Expand the clip and tap the Share button, or long-press and choose Share. Clips are shared as standard .wav files.</li>
+    <li><strong>Select multiple clips:</strong> Tap the pencil icon in the clip list to enter select mode. Tap clips to select them, then use the Share or Delete button that appears.</li>
+  </ul>
+
+  <h2 id="options">Options</h2>
+  <p>Tap the gear icon on the main screen to open Options.</p>
+
+  <h3>Clip Duration</h3>
+  <p>Sets how many seconds of audio are captured each time you tap Save. Range: 15 – 300 seconds. Default: 30 seconds.</p>
+
+  <h3>Clip Naming</h3>
+  <ul>
+    <li><strong>Prefix:</strong> A short text label prepended to every clip name (e.g. "clip", "idea", "take"). Max 12 alphanumeric characters.</li>
+    <li><strong>Timestamp naming:</strong> Names clips with the date and time they were saved — e.g. <em>clip-2026-04-18T14-30-00.wav</em>.</li>
+    <li><strong>Numbered naming:</strong> Names clips sequentially — e.g. <em>clip-1.wav</em>, <em>clip-2.wav</em>.</li>
+  </ul>
+
+  <h3>Appearance</h3>
+  <p>Choose between <strong>Dark</strong>, <strong>Light</strong>, or <strong>Auto</strong> (follows your device's system setting).</p>
+
+  <h3>Background Animation</h3>
+  <p>When enabled, a live waveform visualization plays behind the recording control while the buffer is active. Use the <strong>Gain</strong> slider to make the waveform larger or smaller. Turn this off if you prefer a quieter interface or want to save battery.</p>
+
+  <h2>Tips</h2>
+  <ul>
+    <li>If a phone call or other interruption pauses the buffer, your previously buffered audio is still there — tap Save before navigating away to keep it.</li>
+    <li>Unplugging headphones or an external mic will stop the buffer. Plug back in and restart the slide control to resume.</li>
+    <li>Clips are stored as .wav files in the app's local storage. They are never uploaded anywhere.</li>
+  </ul>
+
+  <footer>
+    <p>Still have questions? Contact us at <a href="mailto:privacy@collinmel.com">privacy@collinmel.com</a>.</p>
+    <p><a href="AudioBuffer-privacy-policy.html">Privacy Policy</a></p>
+  </footer>
+
+</body>
+</html>
